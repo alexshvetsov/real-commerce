@@ -1,0 +1,30 @@
+<div>
+  <div
+    fxLayoutGap="20px"
+    fxLayoutGap.sm="0"
+    fxLayoutGap.lt-sm="0"
+    fxLayout="row"
+    fxLayout.lt-sm="column"
+    fxLayout.sm="column"
+  >
+    <mat-form-field appearance="outline">
+      <mat-label>Search</mat-label>
+      <input
+        matInput
+        type="text"
+        placeholder="Search"
+        [formControl]="searchTerm"
+      />
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+      <button mat-raised-button color="warn" (click)="clear()">Clear</button>
+      <button mat-raised-button color="primary" (click)="refreshResults()">
+        Refresh
+      </button>
+      <button mat-raised-button color="primary" (click)="changeSortDirection()">
+        Change Sort Direction
+      </button>
+    </div>
+  </div>
+</div>

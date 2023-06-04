@@ -1,0 +1,22 @@
+<div class="continaer" fxLayout="column"  fxLayoutGap.sm="20px" fxLayoutGap.lt-sm="20px">
+  <div class="container__search-area" fxLayoutAlign="center">
+    <app-search-bar></app-search-bar>
+  </div>
+  <div class="container__main-area" fxLayout="row" fxLayoutGap="20px" fxLayout.lt-sm="column">
+    <div class="contianer__side-bar">
+      <app-side-bar [mediaTypes]="mediaTypes"></app-side-bar>
+    </div>
+    <div
+      class="container__main-content"
+      [ngClass]="
+        (isVerticalLayout$ | async) ? 'vertical-layout' : 'horizontal-layout'
+      "
+    >
+      <app-media-card
+        class="media-card"
+        *ngFor="let media of shownMedia"
+        [media]="media"
+      ></app-media-card>
+    </div>
+  </div>
+</div>

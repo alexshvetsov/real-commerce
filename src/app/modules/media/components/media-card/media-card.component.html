@@ -1,0 +1,55 @@
+<div
+  fxLayout="row"
+  fxLayout.sm="column-reverse"
+  fxLayout.lt-sm="column-reverse"
+  class="media-card"
+  fxLayoutAlign="start center"
+  fxLayoutGap="20px"
+>
+  <div fxFlex="none" class="img-container" fxLayout="row">
+    <span fxLayout="column" fxFlex="150px"
+    fxFlex.lt-lg="100px">
+      <img
+        src="{{ media.Poster }}"
+        alt="{{ media.Title }}"
+        class="img-fluid"
+        (error)="imgError($event, media.Title)"
+        matTooltip="Inspect media"
+        matTooltipPosition="right"
+        (click)="navigateToMedia(media.imdbID)"
+      />
+      <span *ngIf="imageError">
+        <p
+          class="img-fluid"
+          matTooltip="Inspect media"
+          matTooltipPosition="right" 
+          (click)="navigateToMedia(media.imdbID)"
+        >
+          Click here to inspect media
+        </p>
+      </span>
+    </span>
+  </div>
+  <div fxLayout="column">
+    <span
+      class="title"
+      (click)="toggleEditMode()"
+      *ngIf="!editMode; else inputTemplate"
+      >{{ media.Title }}</span
+    >
+    <ng-template #inputTemplate>
+      <mat-form-field apperance="outline">
+        <mat-label>Title</mat-label>
+        <input
+          matInput
+          type="text"
+          [formControl]="titleInput"
+          (blur)="toggleEditMode()"
+          (keyup.enter)="toggleEditMode()"
+        />
+        <mat-icon matSuffix>edit</mat-icon>
+      </mat-form-field>
+    </ng-template>
+    <span class="year">{{ media.Year | dateToString | date }}</span>
+  </div>
+</div>

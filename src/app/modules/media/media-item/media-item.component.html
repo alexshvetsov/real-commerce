@@ -1,0 +1,11 @@
+<div fxFill fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px">
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="goBack()"
+  >
+    <mat-icon>arrow_back</mat-icon>
+    back
+  </button>
+  <app-media-card *ngIf="media" [media]="media" [disableNavigation]="true"></app-media-card>
+</div>

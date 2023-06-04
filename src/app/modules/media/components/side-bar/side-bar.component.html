@@ -1,0 +1,18 @@
+<div fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="start start">
+  <p
+    *ngFor="let mediaType of mediaTypes"
+    class="media-type"
+    (click)="changeMediaType(mediaType)"
+  >
+    <span
+      [ngClass]="{
+        'media-type--active': mediaType.type === (chosenMediaType$ | async)
+      }"
+    >
+      {{ mediaType | displayMediaType }}
+    </span>
+  </p>
+  <button mat-raised-button color="primary" (click)="changeViewDisplay()">
+    Change View
+  </button>
+</div>
